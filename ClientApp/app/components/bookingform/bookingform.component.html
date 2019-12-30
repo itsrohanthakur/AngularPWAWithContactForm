@@ -1,0 +1,61 @@
+﻿<div class="container">
+    <h1>Come Stay With Us</h1>
+    <form class="form-horizontal" #bookingform="ngForm">
+        <fieldset>
+            <legend>Book Now</legend>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" [(ngModel)]="bookingform.name" #name name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" [(ngModel)]="bookingform.email" #email name="email">
+            </div>
+            
+
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="number" [(ngModel)]="bookingform.contact" #contact name="contact">
+            </div>
+
+            <!--<div class="form-group">
+                <label for="roomtype">Room Type</label>
+                <select [(ngModel)]="bookingform.roomtype" #roomtype name="roomtype" />
+            </div>-->
+
+            <div class="form-group">
+            <label for="roomtype">Room Type</label>
+            <select [(ngModel)]="bookingform.roomtype" (ngModelChange)="getRoomType()">
+                <option [selected]="getRoomType()==='Deluxe Room'">Deluxe Room</option>
+                <option [selected]="getRoomType()==='Twin Room'">Twin Room</option>
+            </select>
+            </div>
+            
+
+            <div class="form-group">
+                <label for="checkin">Check In</label>
+                <input type="date" onkeydown="return false" [(ngModel)]="bookingform.checkin" #checkin name="checkin" placeholder="Enter Check In Date">
+
+            </div>
+            <div class="form-group">
+                <label for="checkout">Check Out</label>
+                <input type="date" onkeydown="return false" [(ngModel)]="bookingform.chekout" #checkout name="checkout" placeholder="Enter Check Out Date">
+
+
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <input type="text" [(ngModel)]="bookingform.message" #message name="message">
+            </div>
+
+
+        </fieldset>
+        <button type="submit"
+                class="btn btn-success"
+                [disabled]="!bookingform.form.valid">
+            Submit
+        </button>
+    </form>
+</div>
+
